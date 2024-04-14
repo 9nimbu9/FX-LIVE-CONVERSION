@@ -72,7 +72,7 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 - **Description:** Retrieves the balances in all currencies for the user's account.
 
 
-###Rates
+### Rates
 - **Endpoint:** `GET /fx-rates`
 - **Description:** Fetches live FX conversion rates from memory stored in the cache.
 - **Response:** Returns a quote ID along with the expiration time and the rates.
@@ -86,12 +86,24 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 
 
 
-## Rate Limiting
+### FX Conversion API
 
-All endpoints are rate-limited to prevent abuse. The default rate limit is set to 30 requests per minute.
+- **Endpoint:** `POST /fx-conversion`
+- **Description:** Fetches specified amounts from one currency to another if not found in cache memory. Performs an FX conversion using the provided quote ID and converts the specified amount from one currency to another.
+- **Request Body:** 
+  ```json
+  {
+    "quoteId": "12345",
+    "from": "USD",
+    "to": "EUR",
+    "amount": 100
+  }
+  ```
+- **Response:** Returns the converted amount along with the quote ID, source currency, target currency, and the original amount.
 
-## Technologies Used
+*Implementation Details*
 
-- NestJS for building the API
-- Swagger for API documentation
-- Throttler for rate limiting
+- **Throttling:** Throttling is applied to limit the number of requests to the endpoint.
+- **Handling Quote ID:** The controller fetches the latest quote ID from the `fx-rates` endpoint and compares it with the provided quote ID.
+- **Currency Conversion:** It calculates the conversion using the latest exchange rate fetched from the cache or the external API (if not found in the cache).
+- **Caching:** The converted amount is cached to improve performance and avoid redundant API calls for the same conversion.
