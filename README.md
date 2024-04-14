@@ -28,8 +28,4 @@
    ```
 
 
-2. Open your web browser and navigate to http://localhost:3000/api (http://localhost:3000/api). This is working through Swagger.
-
-## Usage
-
-Explain how to use your application. Provide examples or screenshots if necessary.
+2. Open your web browser and navigate to http://localhost:3000/api. This is working through Swagger.
