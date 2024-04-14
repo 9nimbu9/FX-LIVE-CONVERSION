@@ -14,8 +14,6 @@
 
 3. Install dependencies:
 
-   If you're using npm:
-
    ```bash
    npm install
    ```
@@ -24,8 +22,6 @@
 ### Running the Application
 
 1. Start the development server:
-
-   If you're using npm:
 
    ```bash
    npm run start
