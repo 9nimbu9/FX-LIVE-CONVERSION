@@ -110,3 +110,12 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 - **Handling Quote ID:** The controller fetches the latest quote ID from the `fx-rates` endpoint and compares it with the provided quote ID.
 - **Currency Conversion:** It calculates the conversion using the latest exchange rate fetched from the cache or the external API (if not found in the cache).
 - **Caching:** The converted amount is cached to improve performance and avoid redundant API calls for the same conversion.
+
+
+
+
+## Additional Features
+1. Adding rate limiting to the APIs. (30 Requests per 60 sec as the Limit)
+2. Implementing caching mechanisms for the FX rates. (The data is fetched much faster once it is cached)
+3. Applying any additional improvements or features you think would enhance
+the system. (/low to deduct amount for the required currency)
