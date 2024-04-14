@@ -6,29 +6,6 @@ Certainly! Here's how you can structure the README for your GitHub repository:
 
 Implement several APIs allowing users to top up their accounts, fetch live FX conversion rates, perform FX conversions, and check their account balances via alphavantage.co. This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access. The application also prevents API routes from being overloaded by requests, hence preventing them from attacks, and FX rates are cached in memory.
 
-## Features
-
-1. **Top Up Account API**
-   - **Endpoint:** `POST /accounts/topup`
-   - **Request body:** `{ "currency": "USD", "amount": 100 }`
-   - **Description:** Allows users to top up their account with a specified amount in a given currency.
-
-2. **FX Rate API**
-   - **Endpoint:** `GET /fx-rates`
-   - **Description:** Fetches live FX conversion rates from memory stored in Step 1.
-   - **Response:** `{ "quoteId": "12345", "expiry_at": "12345"}`
-
-3. **FX Conversion API**
-   - **Endpoint:** `POST /fx-conversion`
-   - **Request body:** `{ "quoteId": "12345", "fromCurrency": "USD", "toCurrency": "EUR", "amount": 100 }`
-   - **Description:** Performs an FX conversion using the provided `quoteId` and converts the specified amount from one currency to another.
-   - **Response:** `{ "convertedAmount": 90.53, "currency": "EUR"}`
-
-4. **Balance API**
-   - **Endpoint:** `GET /accounts/balance`
-   - **Description:** Retrieves the balances in all currencies for the user's account.
-   - **Response:** `{ "balances": { "USD": 1000, "EUR": 500, "GBP": 300 } }`
-
 
 ## Installation
 
@@ -93,6 +70,20 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 
 - **Endpoint:** `GET /accounts/balance`
 - **Description:** Retrieves the balances in all currencies for the user's account.
+
+
+- **Endpoint:** `GET /fx-rates`
+- **Description:** Fetches live FX conversion rates from memory stored in the cache.
+- **Response:** Returns a quote ID along with the expiration time and the rates.
+
+*Implementation Details*
+
+- **Cache Handling:** The controller uses a `cacheService` to handle caching of FX rates and quote IDs.
+- **Quote ID Generation:** It tracks the last time a quote ID was requested and generates a new quote ID if 60 seconds have passed since the last request or if no existing quote ID is available.
+- **Expiration:** The quote ID expires after 60 second*s, and the expiration time is included in the response.
+- **Throttling:** Throttling is applied to limit the number of requests to the endpoint.
+
+
 
 ## Rate Limiting
 
