@@ -6,7 +6,7 @@ Certainly! Here's how you can structure the README for your GitHub repository:
 
 ## Overview
 
-This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access.
+Implementing several APIs that allow users to top up their account, fetch live FX conversion rates, perform FX conversions, and check their account balances via alphavantage.co. This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access.
 
 ## Features
 
@@ -32,7 +32,7 @@ This FX rate syncing application provides a set of APIs for managing account bal
    - **Response:** `{ "balances": { "USD": 1000, "EUR": 500, "GBP": 300 } }`
 
 
-### Installation
+## Installation
 
 1. Clone the repository:
 
@@ -53,7 +53,7 @@ This FX rate syncing application provides a set of APIs for managing account bal
    ```
    
 
-### Running the Application
+## Running the Application
 
 1. Start the development server:
 
