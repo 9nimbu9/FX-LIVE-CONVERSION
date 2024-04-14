@@ -1,7 +1,36 @@
-# FX Conversion
+Certainly! Here's how you can structure the README for your GitHub repository:
 
-Implementing several APIs that allow users to top up their account, fetch live FX conversion rates, perform FX conversions, and check their account balances via alphavantage.co, and in Nest.js.
-The FX rate syncing application retrieves real-time currency exchange rates from alphavantage.co and maintains them in memory. These rates are updated regularly, with each rate remaining valid for 30 seconds. The system intelligently manages the stored rates, ensuring that the most relevant and up-to-date FX rates are readily available for use.
+---
+
+# FX Rate Syncing Application
+
+## Overview
+
+This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access.
+
+## Features
+
+1. **Top Up Account API**
+   - **Endpoint:** `POST /accounts/topup`
+   - **Request body:** `{ "currency": "USD", "amount": 100 }`
+   - **Description:** Allows users to top up their account with a specified amount in a given currency.
+
+2. **FX Rate API**
+   - **Endpoint:** `GET /fx-rates`
+   - **Description:** Fetches live FX conversion rates from memory stored in Step 1.
+   - **Response:** `{ "quoteId": "12345", "expiry_at": "12345"}`
+
+3. **FX Conversion API**
+   - **Endpoint:** `POST /fx-conversion`
+   - **Request body:** `{ "quoteId": "12345", "fromCurrency": "USD", "toCurrency": "EUR", "amount": 100 }`
+   - **Description:** Performs an FX conversion using the provided `quoteId` and converts the specified amount from one currency to another.
+   - **Response:** `{ "convertedAmount": 90.53, "currency": "EUR"}`
+
+4. **Balance API**
+   - **Endpoint:** `GET /accounts/balance`
+   - **Description:** Retrieves the balances in all currencies for the user's account.
+   - **Response:** `{ "balances": { "USD": 1000, "EUR": 500, "GBP": 300 } }`
+
 
 ### Installation
 
