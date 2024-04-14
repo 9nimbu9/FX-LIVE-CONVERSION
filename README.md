@@ -90,7 +90,7 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 
 
 ### FX Conversion API
-- **Caching:** The user will be able to request for a currency conversion only if they have the `quoteId`. To get the `quoteId` the user will first have to make a request to `localhost:3000/api/fx-rates. This `quotesId` that is sent has a an expiration time of 60sec after which the user will have to request for a new `quoteId`. When the user requests for a conversion if the conversion rate is not in the cache memory it will request the alphavantage API for the conversion and store then store it in the cache memeory. Every time I request a `quoteId` the conversion rate will refresh every 30 sec to present the user with new/updated rates.
+- **Caching:** The user will be able to request for a currency conversion only if they have the `quoteId`. To get the `quoteId` the user will first have to make a request to `localhost:3000/api/fx-rates`. This `quotesId` that is sent has a an expiration time of 60sec after which the user will have to request for a new `quoteId`. When the user requests for a conversion if the conversion rate is not in the cache memory it will request the alphavantage API for the conversion and store then store it in the cache memeory. Every time I request a `quoteId` the conversion rate will refresh every 30 sec to present the user with new/updated rates.
 - **Endpoint:** `POST /fx-conversion`
 - **Description:** Fetches specified amounts from one currency to another if not found in cache memory. Performs an FX conversion using the provided quote ID and converts the specified amount from one currency to another.
 - **Request Body:** 
