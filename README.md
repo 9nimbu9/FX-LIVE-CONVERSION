@@ -39,6 +39,20 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 2. Open your web browser and navigate to http://localhost:3000/api. This is working through Swagger.
 
 
+# Note
+1. If you get an error of
+ ```json
+  {
+    "statusCode": 500,
+    "message": "Internal server error"
+  }
+  ```
+   The API Key has mostly reached it's free tier limit. So in this scenario generate a personal API Key from https://www.alphavantage.co or use hotspot or use vpn to by-pass this error. Go to `FX-Conversion-LIVE/src/cache-data/cache.provider.ts` on Line 12 if you want to change the API Key. 
+   
+2. To reduce throttle limit and time to live, open `FX-Conversion-LIVE/src/app.module.ts` and change the values on Line 21 and Line 22.
+3. To change the expireAt time for the `quoteId` go to `FX-Conversion-LIVE/src/rates/fetch-rates.controller.ts` and change the values on Line 45 and Line 48.
+
+
 
 ## Endpoints
 
@@ -119,18 +133,3 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 3. Applying any additional improvements or features you think would enhance
 the system. (/low to deduct amount for the required currency)
 
-
-
-
-#Note
-1. If you get an error of
- ```json
-  {
-    "statusCode": 500,
-    "message": "Internal server error"
-  }
-  ```
-   The API Key has mostly reached it's free tier limit. So in this scenario generate a personal API Key from https://www.alphavantage.co or use hotspot or use vpn to by-pass this error. Go to `FX-Conversion-LIVE/src/cache-data/cache.provider.ts` on Line 12 if you want to change the API Key. 
-   
-2. To reduce throttle limit and time to live, open `FX-Conversion-LIVE/src/app.module.ts` and change the values on Line 21 and Line 22.
-3. To change the expireAt time for the `quoteId` go to `FX-Conversion-LIVE/src/rates/fetch-rates.controller.ts` and change the values on Line 45 and Line 48.
