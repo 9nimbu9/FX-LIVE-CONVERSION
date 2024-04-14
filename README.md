@@ -72,6 +72,7 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
 - **Description:** Retrieves the balances in all currencies for the user's account.
 
 
+###Rates
 - **Endpoint:** `GET /fx-rates`
 - **Description:** Fetches live FX conversion rates from memory stored in the cache.
 - **Response:** Returns a quote ID along with the expiration time and the rates.
