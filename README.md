@@ -1,19 +1,3 @@
-```markdown
-# FX-LIVE-CONVERSION
-
-Brief description of your NestJS application.
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-- Node.js and npm installed on your local machine.
-- Git installed on your local machine.
-
 ### Installation
 
 1. Clone the repository:
