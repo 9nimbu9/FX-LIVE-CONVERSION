@@ -4,7 +4,7 @@ Certainly! Here's how you can structure the README for your GitHub repository:
 
 # FX Rate Syncing Application
 
-Implementing several APIs that allow users to top up their account, fetch live FX conversion rates, perform FX conversions, and check their account balances via alphavantage.co. This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access.
+Implement several APIs allowing users to top up their accounts, fetch live FX conversion rates, perform FX conversions, and check their account balances via alphavantage.co. This FX rate syncing application provides a set of APIs for managing account balances and performing FX conversions. It integrates with alphavantage.co to fetch live FX conversion rates and stores them in memory for efficient access. The application also prevents API routes from being overloaded by requests, hence preventing them from attacks, and FX rates are cached in memory.
 
 ## Features
 
@@ -59,5 +59,47 @@ Implementing several APIs that allow users to top up their account, fetch live F
    npm run start
    ```
 
-
 2. Open your web browser and navigate to http://localhost:3000/api. This is working through Swagger.
+
+
+
+## Endpoints
+
+### Top Up Account API
+
+- **Endpoint:** `POST /accounts/topup`
+- **Description:** Allows users to top up their account with a specified amount in a given currency.
+- **Request Body:**
+  ```json
+  {
+    "amount": 100,
+    "currency": "USD"
+  }
+  ```
+
+### Deduct Account Balance API
+
+- **Endpoint:** `POST /accounts/low`
+- **Description:** Allows users to deduct funds from their account with a specified amount in a given currency. If the deduction amount exceeds the available balance, a `BAD_REQUEST` error is thrown.
+- **Request Body:**
+  ```json
+  {
+    "amount": 50,
+    "currency": "USD"
+  }
+  ```
+
+### Get Account Balance API
+
+- **Endpoint:** `GET /accounts/balance`
+- **Description:** Retrieves the balances in all currencies for the user's account.
+
+## Rate Limiting
+
+All endpoints are rate-limited to prevent abuse. The default rate limit is set to 30 requests per minute.
+
+## Technologies Used
+
+- NestJS for building the API
+- Swagger for API documentation
+- Throttler for rate limiting
