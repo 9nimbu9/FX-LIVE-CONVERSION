@@ -54,6 +54,7 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
   }
   ```
 
+
 ### Deduct Account Balance API
 
 - **Endpoint:** `POST /accounts/low`
@@ -66,10 +67,12 @@ Implement several APIs allowing users to top up their accounts, fetch live FX co
   }
   ```
 
+
 ### Get Account Balance API
 
 - **Endpoint:** `GET /accounts/balance`
 - **Description:** Retrieves the balances in all currencies for the user's account.
+
 
 
 ### Rates
